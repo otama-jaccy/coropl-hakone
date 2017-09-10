@@ -14,7 +14,7 @@ public class ScrollCoupon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// 本当はここでサーバとかからクーポンの個数を取得して couponCount に格納したい
-		couponCount = 5;
+		couponCount = 20;
 
 		// クーポンを並べる場所（Content）を取得
 		RectTransform content = GameObject.Find("Canvas/ScrollView/Viewport/Content").GetComponent<RectTransform>();
@@ -46,14 +46,5 @@ public class ScrollCoupon : MonoBehaviour {
 	public void OnClick(int no) {
 		Debug.Log(no);
 		SceneManager.LoadScene("ShowCoupon");
-		couponID = no;
-	}
-
-	public void setCouponID (int id) {
-		couponID = id;
-	}
-
-	public int getCouponID () {
-		return couponID;
 	}
 }
