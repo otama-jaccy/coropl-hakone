@@ -594,9 +594,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 2e476520-eb29-42bb-a515-ee655aa19ff2
-  projectName: coropl-hakane
-  organizationId: unity_neeoh9kl0otexq
+  cloudProjectId: 5f308333-1a23-4c07-82a1-5bb59a5eab41
+  projectName: coropl-hakane (1)
+  organizationId: kokikobayashi
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

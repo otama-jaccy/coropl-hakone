@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ScrollCoupon : MonoBehaviour {
 
-	private GameObject buttonPrefab; // プレハブに入っているボタン
-	int couponCount; // 所持しているクーポンの個数
+	public GameObject buttonPrefab; // プレハブに入っているボタン
+	static int couponCount = 5; // 所持しているクーポンの個数
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,7 @@ public class ScrollCoupon : MonoBehaviour {
 		couponCount = 5;
 
 		// クーポンを並べる場所（Content）を取得
-		RectTransform content = GameObject.Find("Canvas/ScrollView/Viewport/Content")
-			.GetComponent<RectTransform>();
+		RectTransform content = GameObject.Find("Canvas/ScrollView/Viewport/Content").GetComponent<RectTransform>();
 
 		// Contentの高さを設定
 		//
@@ -25,8 +24,11 @@ public class ScrollCoupon : MonoBehaviour {
 		content.sizeDelta = new Vector2(0, (buttonHeight + buttonSpace) * couponCount);
 		for (int i = 0; i < couponCount; i++) {
 			int no = i;
+			// ボタン生成
 			GameObject button = (GameObject) Instantiate(buttonPrefab);
+			// ボタンを Content の子に設定
 			button.transform.SetParent(content, false);
+			// ボタンのテキスト変更
 			button.transform.GetComponentInChildren<Text>().text = "クーポン " + no.ToString();
 			// ボタンのクリックイベント
 			button.transform.GetComponent<Button>().onClick.AddListener(() => OnClick(no));
@@ -41,5 +43,6 @@ public class ScrollCoupon : MonoBehaviour {
 
 	public void OnClick(int no) {
 		Debug.Log(no);
+		SceneManager.LoadScene("ShowCoupon");
 	}
 }

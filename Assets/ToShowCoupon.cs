@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToUseCoupon : MonoBehaviour {
+public class ToShowCoupon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,11 +15,7 @@ public class ToUseCoupon : MonoBehaviour {
 		
 	}
 
-	public void SceneLoadToList () {
-		SceneManager.LoadScene ("MyCoupon");
-	}
-
-	public void SceneLoadToDetail () {
-		SceneManager.LoadScene ("UseCoupon");
+	public void LoadCoupon() {
+		SceneManager.LoadScene ("ShowCoupon");
 	}
 }
