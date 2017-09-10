@@ -16,6 +16,6 @@ public class ToSearch : MonoBehaviour {
 	}
 
 	public void SceneLoad () {
-		SceneManager.LoadScene ("Search");
+		SceneManager.LoadScene ("LocationProvider");
 	}
 }

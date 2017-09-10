@@ -21,13 +21,13 @@ public class ResultViewManager : MonoBehaviour
 	private bool _getcouponMes = false;
 	private bool _fontreturn = false;
 	private bool _firstbool = true;
+	private bool _showScore = true;
 	private AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start ()
 	{
-//		_userScore = ScoreManager.Score;
-		_userScore = 800;
+		_userScore = ScoreManager.Score;
 		_score = 0;
 		
 		_audioSource = GetComponent<AudioSource>();
@@ -50,7 +50,10 @@ public class ResultViewManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		ScoreView();
+		if (_showScore)
+		{
+			ScoreView();
+		}
 
 		if (_couponMes)
 		{
@@ -74,6 +77,7 @@ public class ResultViewManager : MonoBehaviour
 		if ((int) _score >= (int) _userScore)
 		{
 			_score = _userScore;
+			_showScore = false;
 			_couponMes = true;
 		}
 	}

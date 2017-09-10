@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ShowCoupon : MonoBehaviour {
 
 	[SerializeField] private GameObject popUpView;
-	[SerializeField] private SpriteRenderer renderer;
-	[SerializeField] private SpriteRenderer thumnail;
+	[SerializeField] private Image renderer;
+	[SerializeField] private Image thumnail;
 	private CouponList couponList;
 	private Sprite couponImage;
 	private int _selectedID;
@@ -30,6 +30,7 @@ public class ShowCoupon : MonoBehaviour {
 
 	public void CouponUse() {
 		popUpView.SetActive (true);
+		thumnail.enabled = false;
 		var selectCoupon = CouponList._couponList.Find(cp => cp.getCouponID() == _selectedID);
 		selectCoupon.setIsUsed (true);
 	}
