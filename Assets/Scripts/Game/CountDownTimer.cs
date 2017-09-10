@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UniRx;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,6 +9,7 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 	[SerializeField] private float _maxtime;
 	[SerializeField] private Text _timerText;
 	[SerializeField] private RxCountDownTimer _rxCountDownTimer;
+	public bool StartCountdown;
 	private AudioSource _audioSource;
 	private bool _startBgm;
 	private float _time;
@@ -16,6 +19,7 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 	{
 		_audioSource = GetComponent<AudioSource>();
 		_startBgm = false;
+		StartCountdown = false;
 		_time = _maxtime;
 	}
 
@@ -35,6 +39,7 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 			_timerText.text = currentTime.ToString();
 			if (_time < 4)
 			{
+				StartCountdown = true;
 				_rxCountDownTimer.StartCountDown();
 			}
 		}
@@ -42,7 +47,8 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 		if (!(_time < 1)) return;
 		_time = 0;
 		PlayManager.instance.GameStatus = PlayManager.Phase.Fin;
-		SceneManager.LoadScene("Result");
+		Observable.Timer(TimeSpan.FromSeconds(3f))
+			.Subscribe(_ => SceneManager.LoadScene("Result"));
 		_audioSource.Stop();
 	}
 }

@@ -40,12 +40,13 @@ public class Cream : MonoBehaviour
 
 	private void OnCollisionStay2D(Collision2D other)
 	{
-		
+		if (!other.gameObject.CompareTag("Player")) return;
 		_collisionTime += Time.deltaTime;
-		if (_collisionTime > 0.5f)
+		if (_collisionTime > 0.3f)
 		{
 			Destroy(gameObject);
 			_scoreManager.CalcScore();
+			_collisionTime = 0;
 		}
 	}
 }

@@ -14,7 +14,16 @@ public class StartSign : MonoBehaviour {
 
 		StartCoroutine(StartSignCoroutine());
 	}
-	
+
+	private void Update()
+	{
+		if (PlayManager.instance.GameStatus == PlayManager.Phase.Fin)
+		{
+			FinSign();
+		}
+		
+	}
+
 	private IEnumerator StartSignCoroutine()
 	{
 		yield return new WaitForSeconds(1f);
@@ -24,5 +33,12 @@ public class StartSign : MonoBehaviour {
 		yield return  new WaitForSeconds(1f);
 		_startSign.enabled = false;
 		PlayManager.instance.GameStatus = PlayManager.Phase.Playing;
+	}
+
+	private void FinSign()
+	{
+		_startSign.enabled = true;
+		_startSign.text = "Finish!";
+		_startSign.color = Color.red;
 	}
 }

@@ -26,7 +26,7 @@ public class ResultViewManager : MonoBehaviour
 	void Start ()
 	{
 //		_userScore = ScoreManager.Score;
-		int couponNum = Random.Range(0, _couponSprite.Length);
+		int couponNum = Random.Range(0, _couponSprite.Length-1);
 		_couponImage.sprite = _couponSprite[couponNum];
 		_score = 0;
 		_userScore = 800;

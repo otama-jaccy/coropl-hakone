@@ -21,6 +21,7 @@ public class RxCountDownTimer : MonoBehaviour {
 
 	public void StartCountDown()
 	{
+		
 		_countDownObservable.Connect();
 	}
 	
