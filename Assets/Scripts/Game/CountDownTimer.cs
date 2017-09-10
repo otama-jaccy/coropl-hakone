@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 {
 	[SerializeField] private float _maxtime;
-	[SerializeField] private Image _timerImage;
 	[SerializeField] private Text _timerText;
 	[SerializeField] private RxCountDownTimer _rxCountDownTimer;
 	private AudioSource _audioSource;
@@ -23,8 +22,7 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 	// Update is called once per frame
 	void Update()
 	{
-		_timerImage.fillAmount = _time / _maxtime;
-		if (PlayManager.instance.GameStatus == PlayManager.Phase.Playing) return;
+		if (PlayManager.instance.GameStatus != PlayManager.Phase.Playing) return;
 		if (_time > 0)
 		{
 			if (!_startBgm)

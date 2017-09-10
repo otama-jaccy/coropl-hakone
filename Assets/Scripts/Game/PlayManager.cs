@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayManager: SingletonMonoBehaviour<PlayManager>
 {
 	public Phase GameStatus;
-	
+
 	public enum Phase
 	{
 		Ready,

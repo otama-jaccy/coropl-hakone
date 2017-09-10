@@ -7,7 +7,7 @@ public class CreamGenerator : MonoBehaviour
 	[SerializeField] private float _maxRight;
 	[SerializeField] private float _instantiateY;
 	[SerializeField] private float _spanTime;
-	float timeElapsed;
+	private float _timeElapsed;
 //	[SerializeField] private Sprite[] _creamSprites;
 
 	// Use this for initialization
@@ -18,13 +18,14 @@ public class CreamGenerator : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		print(PlayManager.instance.GameStatus);
 		if (PlayManager.instance.GameStatus == PlayManager.Phase.Playing)
 		{
-			timeElapsed = +Time.deltaTime;
-			if (timeElapsed >= _spanTime)
+			_timeElapsed += Time.deltaTime;
+			if (_timeElapsed >= _spanTime)
 			{
 				GenerateCream();
-				timeElapsed = 0.0f;
+				_timeElapsed = 0.0f;
 			}
 		}
 	}

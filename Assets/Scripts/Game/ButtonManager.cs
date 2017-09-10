@@ -36,5 +36,10 @@ public class ButtonManager : MonoBehaviour
 	{
 		SceneManager.LoadScene("Title");
 	}
+
+	public void BackToTitle()
+	{
+		SceneManager.LoadScene("Title");
+	}
 }
 
