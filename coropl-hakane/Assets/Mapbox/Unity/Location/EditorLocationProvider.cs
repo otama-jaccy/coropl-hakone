@@ -27,6 +27,9 @@ namespace Mapbox.Unity.Location
         [Range(0, 359)]
         float _heading;
 
+		[SerializeField]
+		float speed = 0.001f;
+
         /// <summary>
         /// Gets the current location, as specified in the inspector.
         /// </summary>
@@ -53,6 +56,20 @@ namespace Mapbox.Unity.Location
 #if UNITY_EDITOR
         void Update()
         {
+			Vector2d pos = Location;
+			if (Input.GetKey (KeyCode.UpArrow)) {
+				pos.x += speed;
+			}
+			if (Input.GetKey (KeyCode.DownArrow)) {
+				pos.x -= speed;
+			}
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				pos.y += speed;
+			}
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				pos.y -= speed;
+			}
+			_latitudeLongitude = pos.x.ToString() + "," + pos.y.ToString();
             SendHeadingUpdated();
             SendLocationUpdated();
         }

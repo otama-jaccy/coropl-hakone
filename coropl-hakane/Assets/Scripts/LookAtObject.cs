@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtCamera : MonoBehaviour {
+public class LookAtObject : MonoBehaviour {
 	[SerializeField]
 	GameObject _object;
 
