@@ -46,9 +46,10 @@ public class CountDownTimer : SingletonMonoBehaviour<CountDownTimer>
 
 		if (!(_time < 1)) return;
 		_time = 0;
+		
 		PlayManager.instance.GameStatus = PlayManager.Phase.Fin;
-		Observable.Timer(TimeSpan.FromSeconds(3f))
-			.Subscribe(_ => SceneManager.LoadScene("Result"));
 		_audioSource.Stop();
+
+		SceneManager.LoadScene("Result");
 	}
 }

@@ -30,7 +30,7 @@ public class ScrollCoupon : MonoBehaviour {
 		// クーポン表示関連
 		// クーポン
 		couponList = GameObject.Find ("CouponList").GetComponent<CouponList>();
-		couponList.AddCoupon(new Coupon(0, couponList.CouponNames[0], couponList.CouponSprites[0]));
+//		couponList.AddCoupon(new Coupon(0, couponList.CouponNames[0], couponList.CouponSprites[0]));
 		foreach (Coupon coupon in CouponList._couponList) {
 			if (coupon.getIsUsed())
 				continue;

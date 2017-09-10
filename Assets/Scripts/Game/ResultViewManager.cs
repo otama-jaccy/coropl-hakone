@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -18,7 +19,7 @@ public class ResultViewManager : MonoBehaviour
 	private float _userScore;
 	private float _score;
 	private bool _couponMes = false;
-	private bool _getcouponMes = false;
+	private bool _getcouponMesflag = false;
 	private bool _fontreturn = false;
 	private bool _firstbool = true;
 	private bool _showScore = true;
@@ -27,12 +28,14 @@ public class ResultViewManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		print("start called");
 		_userScore = ScoreManager.Score;
 		_score = 0;
 		
 		_audioSource = GetComponent<AudioSource>();
 
 		int couponNum = Random.Range(0, 2);
+		print(couponNum);
 
 		Coupon getcoupon = new Coupon(couponNum, _couponsList.CouponNames[couponNum], _couponsList.CouponSprites[couponNum]);
 		
@@ -50,18 +53,22 @@ public class ResultViewManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		_scoreValue.text = _score.ToString();
 		if (_showScore)
 		{
+			print("aaa");
 			ScoreView();
 		}
 
 		if (_couponMes)
 		{
+			print("bbb");
 			CouponMesAnimation();
 		}
 
-		if (_getcouponMes)
+		if (_getcouponMesflag)
 		{
+			print("ccc");
 			ShowCoupon();
 		}
 	}
@@ -106,7 +113,8 @@ public class ResultViewManager : MonoBehaviour
 				if (_couponMesText.GetComponent<Text>().fontSize <= 70)
 				{
 					_couponMesText.GetComponent<Text>().fontSize = 70;
-					_getcouponMes = true;
+					_getcouponMesflag = true;
+					_couponMes = false;
 				}
 			}
 		}
@@ -119,6 +127,7 @@ public class ResultViewManager : MonoBehaviour
 
 	private void ShowCoupon()
 	{
+		_getcouponMesflag = false;
 		_getCouponMes.enabled = true;
 		_couponImage.enabled = true;
 	}

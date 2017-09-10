@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CouponList : SingletonMonoBehaviour<CouponList> {
@@ -11,10 +9,10 @@ public class CouponList : SingletonMonoBehaviour<CouponList> {
 	public static List<Coupon> _couponList;
 	public int selectedID = -1;
 
-	void Awake()
+	void Start()
 	{
-		_couponList = new List<Coupon>();
 		DontDestroyOnLoad(gameObject);
+		_couponList = new List<Coupon>();	
 	}
 
 	public void AddCoupon(Coupon cp)

@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8bbad3f886248e1870c23b21450a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxtime: 15
+  _maxtime: 10
   _timerText: {fileID: 1046653652}
   _rxCountDownTimer: {fileID: 20013068}
   StartCountdown: 0
@@ -2182,7 +2182,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2194,7 +2194,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2206,7 +2206,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1750409373
 GameObject:
   m_ObjectHideFlags: 0
