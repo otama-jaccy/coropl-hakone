@@ -4,4 +4,25 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 2fa10486c75104559853031833521d7a
+  - enabled: 1
+    path: Assets/Scenes/MyCoupon.unity
+    guid: 66455183260c44001b806664b3f3295d
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 1567c6309f68243e791ec9e449258c23
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 023fc52a00f25490fb4707c8dc7954b6
+  - enabled: 1
+    path: Assets/Scenes/Search.unity
+    guid: 21beb20d769024137a1c7cc8ace10bba
+  - enabled: 1
+    path: Assets/Scenes/ShowCoupon.unity
+    guid: 6d860029a1cf748c9a6a55ed8bf9e792
+  - enabled: 1
+    path: Assets/Scenes/UseCoupon.unity
+    guid: 6b31a11d017514f7287d971403055d7e

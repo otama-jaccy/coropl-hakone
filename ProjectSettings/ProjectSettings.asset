@@ -586,12 +586,17 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 3a798909-bd1e-428c-b718-84fe3dc43a3a
-  projectName: coropl-hakane
-  organizationId: funamin310
+  cloudProjectId: 5f308333-1a23-4c07-82a1-5bb59a5eab41
+  projectName: coropl-hakane (1)
+  organizationId: kokikobayashi
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
