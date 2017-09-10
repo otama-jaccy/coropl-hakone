@@ -75,11 +75,11 @@ public class ResultViewManager : MonoBehaviour
 			_firstbool = false;
 		}
 		_couponMesText.enabled = true;
-		if (_couponMesText.GetComponent<Text>().fontSize < 90)
+		if (_couponMesText.GetComponent<Text>().fontSize < 70)
 		{
 			_couponMesText.GetComponent<Text>().fontSize += 2;
 		}
-		if (_couponMesText.GetComponent<Text>().fontSize > 90 || _couponMesText.GetComponent<Text>().fontSize < 99)
+		if (_couponMesText.GetComponent<Text>().fontSize > 70 || _couponMesText.GetComponent<Text>().fontSize < 80)
 		{
 			if (!_fontreturn)
 			{
@@ -88,14 +88,14 @@ public class ResultViewManager : MonoBehaviour
 			else
 			{
 				_couponMesText.GetComponent<Text>().fontSize -= 1;
-				if (_couponMesText.GetComponent<Text>().fontSize <= 90)
+				if (_couponMesText.GetComponent<Text>().fontSize <= 70)
 				{
-					_couponMesText.GetComponent<Text>().fontSize = 90;
+					_couponMesText.GetComponent<Text>().fontSize = 70;
 					_getcouponMes = true;
 				}
 			}
 		}
-		if (_couponMesText.GetComponent<Text>().fontSize >= 99)
+		if (_couponMesText.GetComponent<Text>().fontSize >= 80)
 		{
 			_couponMesText.GetComponent<Text>().fontSize -= 1;
 			_fontreturn = true;
