@@ -5,10 +5,14 @@ using UnityEngine;
 public class Cream : MonoBehaviour
 {
 	[SerializeField] private ScoreManager _scoreManager;
+	[SerializeField] private AudioClip _audioClip;
 	private float _collisionTime;
+	private AudioSource _audioSource;
+	
 	// Use this for initialization
 	void Start () {
-		GetComponent<SpriteRenderer>().enabled = false;	
+		GetComponent<SpriteRenderer>().enabled = false;
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -42,9 +46,10 @@ public class Cream : MonoBehaviour
 	{
 		if (!other.gameObject.CompareTag("Player")) return;
 		_collisionTime += Time.deltaTime;
-		if (_collisionTime > 0.3f)
+		if (_collisionTime > 0.2f)
 		{
-			Destroy(gameObject);
+			_audioSource.PlayOneShot(_audioClip);
+			Destroy(gameObject, 0.1f);
 			_scoreManager.CalcScore();
 			_collisionTime = 0;
 		}
