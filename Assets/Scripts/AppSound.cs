@@ -16,11 +16,12 @@ public class AppSound : SingletonMonoBehaviour<AppSound> {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		GetComponent<AudioSource>().volume = 0.8f;
 		if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "Result")
 		{
-			GetComponent<AudioSource>().Stop();
+			GetComponent<AudioSource>().volume = 0f;
 		}
 	}
 }

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToSearch : MonoBehaviour {
+public class ToSearch : MonoBehaviour
+{
+
+	[SerializeField] private AudioClip _audioClip;
+	private AudioSource _audioSource;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +21,7 @@ public class ToSearch : MonoBehaviour {
 	}
 
 	public void SceneLoad () {
+		_audioSource.PlayOneShot(_audioClip);
 		SceneManager.LoadScene ("LocationProvider");
 	}
 }

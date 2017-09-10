@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BurstBotton : MonoBehaviour {
+	
+	[SerializeField] private AudioClip _audioClip;
+	private AudioSource _audioSource;
 	private Button button;
 	private Color color;
 	private Vector3 position;
@@ -12,6 +15,7 @@ public class BurstBotton : MonoBehaviour {
 	private float x;
 	
 	void Start(){
+		_audioSource = GetComponent<AudioSource>();
 		button = GetComponent<Button> ();
 		button.onClick.AddListener(onClick);
 		rectTransform = gameObject.GetComponent<RectTransform>();
@@ -34,6 +38,7 @@ public class BurstBotton : MonoBehaviour {
 
 	void onClick()
 	{
+		_audioSource.PlayOneShot(_audioClip);
 		SceneManager.LoadScene("Game");
 	}
 }

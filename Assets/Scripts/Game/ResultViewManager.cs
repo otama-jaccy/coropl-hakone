@@ -11,7 +11,7 @@ public class ResultViewManager : MonoBehaviour
 	[SerializeField] private Text _couponMesText;
 	[SerializeField] private Text _getCouponMes;
 
-	[SerializeField] private CouponList _couponsList;
+//	[SerializeField] private CouponList _couponsList;
 	[SerializeField] private Image _couponImage;
 	
 	[SerializeField] private AudioClip _counterClip;
@@ -24,6 +24,7 @@ public class ResultViewManager : MonoBehaviour
 	private bool _firstbool = true;
 	private bool _showScore = true;
 	private AudioSource _audioSource;
+	private CouponList _couponList;
 
 	// Use this for initialization
 	void Start ()
@@ -33,21 +34,24 @@ public class ResultViewManager : MonoBehaviour
 		_score = 0;
 		
 		_audioSource = GetComponent<AudioSource>();
+		_couponList = GameObject.Find ("CouponList").GetComponent<CouponList>();
 
-		int couponNum = Random.Range(0, 2);
+		int couponNum = Random.Range(0, 3);
 		print(couponNum);
 
-		Coupon getcoupon = new Coupon(couponNum, _couponsList.CouponNames[couponNum], _couponsList.CouponSprites[couponNum]);
-		
-		
+//		Coupon getcoupon = new Coupon(couponNum, _couponList.CouponNames[couponNum], _couponList.CouponSprites[couponNum]);
+		Coupon getcoupon = new Coupon();
+		getcoupon.setCouponID(couponNum);
+		getcoupon.setCouponName(_couponList.CouponNames[couponNum]);
+		getcoupon.setSprite(_couponList.CouponSprites[couponNum]);
 		_couponMesText.enabled = false;
 		_getCouponMes.enabled = false;
 		_couponImage.enabled = false;
 		
-		_couponImage.sprite = _couponsList.CouponSprites[couponNum];
+		_couponImage.sprite = _couponList.CouponSprites[couponNum];
 		
-		_couponsList.AddCoupon(getcoupon);
-		
+//		_couponList.AddCoupon(getcoupon);
+		_couponList.AddCoupon(couponNum);
 	}
 	
 	// Update is called once per frame
@@ -56,19 +60,16 @@ public class ResultViewManager : MonoBehaviour
 		_scoreValue.text = _score.ToString();
 		if (_showScore)
 		{
-			print("aaa");
 			ScoreView();
 		}
 
 		if (_couponMes)
 		{
-			print("bbb");
 			CouponMesAnimation();
 		}
 
 		if (_getcouponMesflag)
 		{
-			print("ccc");
 			ShowCoupon();
 		}
 	}

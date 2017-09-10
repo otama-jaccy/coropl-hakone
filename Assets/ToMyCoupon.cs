@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ToMyCoupon : MonoBehaviour {
 
+	
+	[SerializeField] private AudioClip _audioClip;
+	private AudioSource _audioSource;
+	
 	// Use this for initialization
 	void Start () {
-		
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +20,7 @@ public class ToMyCoupon : MonoBehaviour {
 	}
 
 	public void SceneLoad () {
+		_audioSource.PlayOneShot(_audioClip);
 		SceneManager.LoadScene ("MyCoupon");
 	}
 }

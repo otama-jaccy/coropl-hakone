@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToUseCoupon : MonoBehaviour {
+public class TouseCoupon : MonoBehaviour {
+	
+	[SerializeField] private AudioClip _audioClip;
+	private AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start () {
-		
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -16,10 +19,8 @@ public class ToUseCoupon : MonoBehaviour {
 	}
 
 	public void SceneLoadToList () {
+		_audioSource.PlayOneShot(_audioClip);
 		SceneManager.LoadScene ("MyCoupon");
 	}
 
-	public void SceneLoadToDetail () {
-		SceneManager.LoadScene ("UseCoupon");
-	}
 }

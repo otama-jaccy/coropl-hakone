@@ -36,8 +36,6 @@ public class CreamGenerator : MonoBehaviour
 		var cream = Instantiate(_cream);
 		var x =  Random.Range( _maxLeft, _maxRight);
 		cream.transform.position = new Vector2(x, _instantiateY); //instantiate positionの指定
-//		var length = _creamSprites.Length;
-//		var i = Random.Range(0, length); //配列長分のコーンの種類
 		var creamColor = new Color(Random.Range(0f,256f), Random.Range(0f,256f), Random.Range(0f,256f));
 		var creamsprite = cream.GetComponent<SpriteRenderer>(); 
 		creamsprite.color = creamColor; //spriteの指定

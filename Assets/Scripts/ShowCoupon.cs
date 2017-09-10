@@ -9,6 +9,8 @@ public class ShowCoupon : MonoBehaviour {
 	[SerializeField] private GameObject popUpView;
 	[SerializeField] private Image renderer;
 	[SerializeField] private Image thumnail;
+	[SerializeField] private AudioClip _audioClip;
+	private AudioSource _audioSource;
 	private CouponList couponList;
 	private Sprite couponImage;
 	private int _selectedID;
@@ -21,6 +23,7 @@ public class ShowCoupon : MonoBehaviour {
 		couponImage = couponList.CouponSprites [_selectedID];
 		renderer.sprite = couponImage;
 		thumnail.sprite = couponImage;
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -29,13 +32,16 @@ public class ShowCoupon : MonoBehaviour {
 	}
 
 	public void CouponUse() {
+		_audioSource.PlayOneShot(_audioClip);
 		popUpView.SetActive (true);
 		thumnail.enabled = false;
-		var selectCoupon = CouponList._couponList.Find(cp => cp.getCouponID() == _selectedID);
-		selectCoupon.setIsUsed (true);
+		var selectCoupon = couponList.CouponIdList.Find(cp => cp == _selectedID);
+//		selectCoupon.setIsUsed (true);
+		couponList.RemoveCoupon(selectCoupon);
 	}
 
 	public void Back() {
+		_audioSource.PlayOneShot(_audioClip);
 		SceneManager.LoadScene ("MyCoupon");
 	}
 }

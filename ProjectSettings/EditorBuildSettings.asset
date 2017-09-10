@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Result.unity
     guid: 023fc52a00f25490fb4707c8dc7954b6
   - enabled: 0
-    path: Assets/Scenes/Search.unity
+    path: 
     guid: 21beb20d769024137a1c7cc8ace10bba
   - enabled: 1
     path: Assets/Scenes/ShowCoupon.unity
