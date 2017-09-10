@@ -12,11 +12,15 @@ public class ResultViewManager : MonoBehaviour
 	[SerializeField] private Text _getCouponMes;
 	[SerializeField] private Image _couponImage;
 	[SerializeField] private Sprite[] _couponSprite;
+	[SerializeField] private AudioClip _counterClip;
+	[SerializeField] private AudioClip _tadasound;
 	private float _userScore;
 	private float _score;
 	private bool _couponMes = false;
 	private bool _getcouponMes = false;
 	private bool _fontreturn = false;
+	private bool _firstbool = true;
+	private AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start ()
@@ -29,6 +33,7 @@ public class ResultViewManager : MonoBehaviour
 		_couponMesText.enabled = false;
 		_getCouponMes.enabled = false;
 		_couponImage.enabled = false;
+		_audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -53,6 +58,7 @@ public class ResultViewManager : MonoBehaviour
 		if ((int)_score < (int)_userScore)
 		{
 			_score += 10;
+			_audioSource.PlayOneShot(_counterClip);
 		}
 		if ((int) _score >= (int) _userScore)
 		{
@@ -63,6 +69,11 @@ public class ResultViewManager : MonoBehaviour
 
 	private void CouponMesAnimation()
 	{
+		if (_firstbool)
+		{
+			_audioSource.PlayOneShot(_tadasound);
+			_firstbool = false;
+		}
 		_couponMesText.enabled = true;
 		if (_couponMesText.GetComponent<Text>().fontSize < 90)
 		{
