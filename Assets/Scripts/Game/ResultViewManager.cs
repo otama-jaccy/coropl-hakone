@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ResultViewManager : MonoBehaviour
 {
@@ -10,8 +9,10 @@ public class ResultViewManager : MonoBehaviour
 	[SerializeField] private Text _scoreValue;
 	[SerializeField] private Text _couponMesText;
 	[SerializeField] private Text _getCouponMes;
+
+	[SerializeField] private CouponList _couponsList;
 	[SerializeField] private Image _couponImage;
-	[SerializeField] private Sprite[] _couponSprite;
+	
 	[SerializeField] private AudioClip _counterClip;
 	[SerializeField] private AudioClip _tadasound;
 	private float _userScore;
@@ -26,14 +27,24 @@ public class ResultViewManager : MonoBehaviour
 	void Start ()
 	{
 //		_userScore = ScoreManager.Score;
-		int couponNum = Random.Range(0, _couponSprite.Length-1);
-		_couponImage.sprite = _couponSprite[couponNum];
-		_score = 0;
 		_userScore = 800;
+		_score = 0;
+		
+		_audioSource = GetComponent<AudioSource>();
+
+		int couponNum = Random.Range(0, 2);
+
+		Coupon getcoupon = new Coupon(couponNum, _couponsList.CouponNames[couponNum], _couponsList.CouponSprites[couponNum]);
+		
+		
 		_couponMesText.enabled = false;
 		_getCouponMes.enabled = false;
 		_couponImage.enabled = false;
-		_audioSource = GetComponent<AudioSource>();
+		
+		_couponImage.sprite = _couponsList.CouponSprites[couponNum];
+		
+		_couponsList.AddCoupon(getcoupon);
+		
 	}
 	
 	// Update is called once per frame

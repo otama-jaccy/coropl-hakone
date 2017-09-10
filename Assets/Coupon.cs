@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coupon : MonoBehaviour {
+public class Coupon {
 
 	[SerializeField] private static int couponID;
 	[SerializeField] private static string couponName;
 	[SerializeField] private static Sprite sprite;
 	[SerializeField] private static bool isUsed = false;
 
-	// Use this for initialization
-	void Start () {
-		
+	public Coupon(int id, string name, Sprite src)
+	{
+		couponID = id;
+		couponName = name;
+		sprite = src;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	// セッタ
 	public void setCouponID (int id) {
 		couponID = id;
