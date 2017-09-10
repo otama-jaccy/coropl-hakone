@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScrollCoupon : MonoBehaviour {
 
 	[SerializeField] private GameObject buttonPrefab; // プレハブに入っているボタン
+
 //	[SerializeField] private string couponPath;
 	static int couponCount = 5; // 所持しているクーポンの個数
 	private static int couponID = -1;
@@ -15,7 +16,7 @@ public class ScrollCoupon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// 本当はここでサーバとかからクーポンの個数を取得して couponCount に格納したい
-		couponCount = 5;
+//		couponCount = 5;
 
 		// クーポンを並べる場所（Content）を取得
 		RectTransform content = GameObject.Find("Canvas/ScrollView/Viewport/Content").GetComponent<RectTransform>();
@@ -29,14 +30,16 @@ public class ScrollCoupon : MonoBehaviour {
 		// クーポン表示関連
 		// クーポン
 		couponList = GameObject.Find ("CouponList").GetComponent<CouponList>();
-		foreach (Coupon coupon in couponList._couponList) {
-			if (coupon.getIsUsed)
+		couponList.AddCoupon(new Coupon(0, couponList.CouponNames[0], couponList.CouponSprites[0]));
+		foreach (Coupon coupon in CouponList._couponList) {
+			if (coupon.getIsUsed())
 				continue;
 			GameObject button = (GameObject)Instantiate (buttonPrefab);
 			button.transform.SetParent (content, false);
-			button.transform.GetComponentInChildren<Text> ().text = coupon.getCouponName;
-			button.transform.GetComponent<Button> ().onClick.AddListener (() => OnClick (coupon.getCouponID));
+			button.transform.GetComponentInChildren<Text> ().text = coupon.getCouponName();
+			button.transform.GetComponent<Button> ().onClick.AddListener (() => OnClick (coupon));
 		}
+
 //		for (int i = 0; i < couponCount; i++) {
 //			int no = i;
 //			// ボタン生成
@@ -56,8 +59,9 @@ public class ScrollCoupon : MonoBehaviour {
 
 	}
 
-	public void OnClick(int no) {
-		Debug.Log(no);
+	public void OnClick(Coupon coupon) {
+		Debug.Log(coupon.getCouponID());
 		SceneManager.LoadScene("ShowCoupon");
+		couponList.selectedID = coupon.getCouponID();
 	}
 }
