@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ScrollCoupon : MonoBehaviour {
 
-	public GameObject buttonPrefab; // プレハブに入っているボタン
+	[SerializeField] private GameObject buttonPrefab; // プレハブに入っているボタン
+//	[SerializeField] private string couponPath;
 	static int couponCount = 5; // 所持しているクーポンの個数
+	private static int couponID = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -44,5 +46,14 @@ public class ScrollCoupon : MonoBehaviour {
 	public void OnClick(int no) {
 		Debug.Log(no);
 		SceneManager.LoadScene("ShowCoupon");
+		couponID = no;
+	}
+
+	public void setCouponID (int id) {
+		couponID = id;
+	}
+
+	public int getCouponID () {
+		return couponID;
 	}
 }
