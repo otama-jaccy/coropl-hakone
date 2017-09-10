@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CouponList : MonoBehaviour{
+public class CouponList : SingletonMonoBehaviour<CouponList> {
 	
 	[SerializeField] public Sprite[] CouponSprites;
 	[SerializeField] public String[] CouponNames;
 	public static List<Coupon> _couponList;
+	public int selectedID = -1;
 
 	void Awake()
 	{
